@@ -4,3 +4,5 @@
 
 Guide to setup bridge:
  - https://www.raspberrypi.org/documentation/configuration/wireless/access-point.md#internet-sharing
+
+eth0 will be wlan1 as we are using two wireless networks instead of one wired.
