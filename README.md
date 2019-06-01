@@ -60,9 +60,39 @@ dnsmasq for dhcp server on AP, /etc/dnsmasq.conf:
 interface=wlan0
 listen-address=192.168.4.1
 bind-interfaces
+server=1.1.1.1       # Cloudflare DNS
 domain-needed        # Don't forward short names
 bogus-priv           # Drop the non-routed address spaces
 dhcp-range=192.168.4.50,192.168.4.150,12h # IP range and lease time
+```
+
+## nat
+
+/etc/sysctl.conf:
+
+```
+net.ipv4.ip_forward=1
+
+```
+
+Iptables:
+
+```
+sudo iptables -t nat -A POSTROUTING -o wlan1 -j MASQUERADE
+sudo iptables -A FORWARD -i wlan1 -o wlan0 -m state --state RELATED,ESTABLISHED -j ACCEPT
+sudo iptables -A FORWARD -i wlan0 -o wlan1 -j ACCEPT
+```
+
+Save the iptables rule.
+
+```
+sudo sh -c "iptables-save > /etc/iptables.ipv4.nat"
+```
+
+Edit /etc/rc.local and add this just above "exit 0" to install these rules on boot.
+
+```
+iptables-restore < /etc/iptables.ipv4.nat
 ```
 
 ## other
