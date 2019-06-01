@@ -12,6 +12,11 @@ To make sure only wlan1 connects to internet router.
 /etc/network/interfaces
 
 ```
+allow-hotplug wlan0
+iface wlan0 inet static
+address 192.168.4.1
+netmask 255.255.255.0
+
 allow-hotplug wlan1
 
 iface wlan1 inet manual                
@@ -46,14 +51,6 @@ ignore_broadcast_ssid=0
 
 ## dns
 
-Static ip for wlan0 using dhcp client software, /etc/dhcpcd.conf:
-
-```
-interface wlan0
-static ip_address=192.168.4.1/24
-nohook wpa_supplicant
-```
-
 dnsmasq for dhcp server on AP, /etc/dnsmasq.conf:
 
 ```
@@ -68,7 +65,7 @@ dhcp-range=192.168.4.50,192.168.4.150,12h # IP range and lease time
 
 ## nat
 
-/etc/sysctl.conf:
+in /etc/sysctl.conf, comment out this line:
 
 ```
 net.ipv4.ip_forward=1
