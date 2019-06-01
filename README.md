@@ -2,8 +2,8 @@
 
 1 extra wireless dongle: Edimax EW-7612UAn v2. Works with raspbian lite out of the box.
 
-wlan0 = internal raspberry pi wifi (access point)
-wlan1 = external wifi (connected to router)
+- wlan0 = internal raspberry pi wifi (access point)
+- wlan1 = external wifi (connected to router)
 
 ## network
 
@@ -26,7 +26,7 @@ iface router inet dhcp
 network={
         ssid="12345678"
         psk="XXXSECRETXXX"
-	      id_str="router"
+        id_str="router"
 }
 ```
 
