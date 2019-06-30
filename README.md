@@ -91,12 +91,3 @@ Edit /etc/rc.local and add this just above "exit 0" to install these rules on bo
 ```
 iptables-restore < /etc/iptables.ipv4.nat
 ```
-
-## other
-
-If udev changes the network interfaces names you can include a file in /etc/udev/rules.d/ called 10-network-device.rules:
-
-```
-SUBSYSTEM=="net", ACTION=="add", ATTR{address}=="22:bb:cc:33:44:dd", NAME="wlan0"
-SUBSYSTEM=="net", ACTION=="add", ATTR{address}=="22:bb:cc:33:44:d1", NAME="wlan1"
-```
