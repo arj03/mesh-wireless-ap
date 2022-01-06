@@ -52,6 +52,15 @@ auth_algs=1
 ignore_broadcast_ssid=0
 ```
 
+Reference the config in /etc/default/hostapd with option DAEMON_CONF="/etc/hostapd/hostapd.conf"
+
+Enable service:
+
+```
+sudo systemctl unmask hostapd.service
+sudo systemctl enable hostapd.service
+```
+
 ## dns
 
 dnsmasq for dhcp server on AP, /etc/dnsmasq.conf:
