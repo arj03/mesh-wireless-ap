@@ -38,6 +38,8 @@ network={
 
 ## hostapd
 
+Create a new file /etc/hostapd/hostapd.conf with:
+
 ```
 interface=wlan0
 ssid=mesh
