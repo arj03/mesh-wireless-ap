@@ -75,6 +75,8 @@ bogus-priv           # Drop the non-routed address spaces
 dhcp-range=192.168.4.50,192.168.4.150,12h # IP range and lease time
 ```
 
+if you decide to install pi-hole, I would recommend not installing and configuring dnsmasq first. It will give you a ton of problems, like permissions in /var/log/misc and configuration wise as config is now stored in /etc/dnsmasq.d/.
+
 ## nat
 
 in /etc/sysctl.conf, comment out this line:
